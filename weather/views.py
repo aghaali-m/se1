@@ -1,6 +1,6 @@
 import random
 
-from django.contrib.sites import requests
+import requests
 from django.shortcuts import render
 
 # Create your views here.
@@ -11,7 +11,7 @@ def show_temp_view(request):
     url=f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current_weather=true"
     try:
         data=requests.get(url).json()
-        temp=data['current weather']['tempreture']
+        temp=data["current_weather"]["temperature"]
     except:
         temp=None
 
